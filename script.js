@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://joyboynosekai-backend.onrender.com";
+const BACKEND_URL = "https://backend-wvv1.onrender.com";
 
 const productContainer = document.getElementById("product-container");
 const navLinks = document.querySelectorAll(".nav-menu a[data-category]");
