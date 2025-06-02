@@ -35,7 +35,7 @@ function displayProducts(products) {
     card.className = "product-card";
 
     card.innerHTML = `
-      <img src="images/${product.category.toLowerCase()}/${product.image}" alt="${product.name}" loading="lazy" />
+      <img src="assets/images/${product.category.toLowerCase()}/${product.image}" alt="${product.name}" loading="lazy" />
       <h3>${product.name}</h3>
       <p>${product.description}</p>
       <p><strong>R${product.price.toFixed(2)}</strong></p>
