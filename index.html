@@ -5,14 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joy Boy no Sekai</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:,">
+  <link rel="icon" href="data:," />
+  <style>
+    /* Basic responsive nav styles */
+    .nav-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      padding: 0.5em 1em;
+      display: block;
+      border-radius: 4px;
+      color: var(--text-color, #000);
+    }
+
+    .nav-menu li a.active,
+    .nav-menu li a:hover {
+      background-color: var(--accent-color, #007bff);
+      color: white;
+    }
+
+    /* Responsive toggle button (hamburger) - basic example */
+    @media (max-width: 600px) {
+      .nav-menu {
+        flex-direction: column;
+        display: none;
+      }
+      .nav-menu.show {
+        display: flex;
+      }
+      #navToggle {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.5em;
+        background: none;
+        border: none;
+        color: var(--text-color, #000);
+        margin-bottom: 0.5em;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Joy Boy no Sekai</h1>
     <p class="tagline">Drip Born from Freedom</p>
-    <nav>
-      <ul class="nav-menu">
+
+    <nav aria-label="Product categories">
+      <button id="navToggle" aria-label="Toggle navigation menu">☰ Menu</button>
+      <ul class="nav-menu" id="navMenu">
         <li><a href="#" data-category="upperwear">Upperwear</a></li>
         <li><a href="#" data-category="lowerwear">Lowerwear</a></li>
         <li><a href="#" data-category="footwear">Footwear</a></li>
@@ -20,16 +68,22 @@
         <li><a href="#" data-category="accessories">Accessories</a></li>
         <li><a href="cart.html">🛒 Cart</a></li>
       </ul>
-      <button id="themeToggle">Toggle Mode</button>
     </nav>
 
     <!-- Search input -->
     <div style="margin: 1em 0; text-align: center;">
-      <input type="text" id="search-input" placeholder="Search products..." style="width: 80%; max-width: 400px; padding: 0.5em; font-size: 1em;" />
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search products..."
+        style="width: 80%; max-width: 400px; padding: 0.5em; font-size: 1em;"
+        aria-label="Search products"
+      />
+      <button id="search-btn" style="padding: 0.5em 1em; font-size: 1em;">Search</button>
     </div>
   </header>
 
-  <main id="product-container">
+  <main id="product-container" role="main">
     <!-- Products will be injected here -->
   </main>
 
@@ -37,7 +91,16 @@
     <p>© 2025 Joy Boy no Sekai</p>
   </footer>
 
-  <script src="theme-toggle.js"></script>
   <script src="script.js"></script>
+
+  <script>
+    // Nav toggle for small screens
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
